@@ -1,0 +1,57 @@
+type: update
+name: Zabbix Server Upgrade 
+baseUrl: https://raw.githubusercontent.com/Aureliolo/Jelastic-Zabbix-Server/master
+logo: images/zabbix.svg
+description: |
+  This Addon allows you to upgrade the Zabbix Server and frontend.  
+
+targetNodes:
+  nodeGroup: [cp]
+ 
+onInstall:
+  - backup-files
+  - upgrade-zabbix
+  - upgrade-frontend
+
+actions:
+  backup-files:
+    - log: Bckup zabbix components
+    - cmd [cp]: |-
+        systemctl stop zabbix-server &>> /var/log/run.log
+        systemctl stop zabbix-agent &>> /var/log/run.log
+        cp --backup=numbered /etc/zabbix/zabbix_server.conf /opt/zabbix/configs/ &>> /var/log/run.log
+        cp --backup=numbered /var/www/webroot/ROOT/conf/zabbix.conf.php /opt/zabbix/configs/ &>> /var/log/run.log
+        cp --backup=numbered /usr/local/lsws/lsphp74/etc/php.ini /opt/zabbix/configs/ &>> /var/log/run.log
+        cp -R /var/www/webroot/ROOT /opt/zabbix/temp/ &>> /var/log/run.log
+        zip -r /opt/zabbix/temp/frontend.zip /opt/zabbix/temp/* &>> /var/log/run.log
+        cp --backup=numbered /opt/zabbix/temp/frontend.zip /opt/zabbix/frontend/ &>> /var/log/run.log
+        rm /opt/zabbix/temp/* -r &>> /var/log/run.log
+      user: root
+      sayYes: true
+
+  upgrade-zabbix:
+    - log: upgrade zabbix packages
+    - cmd [cp]: |-
+        yum upgrade -y 'zabbix-*' centos-release-scl &>> /var/log/run.log
+        systemctl start zabbix-server zabbix-agent &>> /var/log/run.log
+        systemctl enable zabbix-server zabbix-agent &>> /var/log/run.log
+      user: root
+      sayYes: true
+
+  upgrade-frontend:
+    - log: upgrade frontend
+    - cmd [cp]: |-
+        cd /opt/zabbix/temp/
+        wget ${baseUrl}/frontend/frontend.zip &>> /var/log/run.log
+        unzip frontend.zip &>> /var/log/run.log
+        rm frontend.zip &>> /var/log/run.log
+        \cp -R /opt/zabbix/temp/. /var/www/webroot/ROOT &>> /var/log/run.log
+        rm /opt/zabbix/temp/* -r &>> /var/log/run.log
+        sed -i 's#/etc/zabbix/web/maintenance.inc.php#/var/www/webroot/ROOT/conf/maintenance.inc.php#g' /var/www/webroot/ROOT/include/classes/core/ZBase.php
+        sed -i 's#/etc/zabbix/web/zabbix.conf.php#/var/www/webroot/ROOT/conf/zabbix.conf.php#g' /var/www/webroot/ROOT/include/classes/core/CConfigFile.php
+      user: root
+      sayYes: true
+
+
+success:
+  text: text/success-update-text.mds

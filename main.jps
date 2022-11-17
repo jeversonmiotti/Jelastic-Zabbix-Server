@@ -1,0 +1,110 @@
+type: install
+name: Zabbix Server
+baseUrl: https://raw.githubusercontent.com/jeversonmiotti/Jelastic-Zabbix-Server/master
+logo: images/zabbix.svg
+homepage: https://zabbix.com
+description: |
+  Zabbix Server for monitoring of nodes and other servers  
+  This JPS is based on the LLSMP Stack and installs Zabbix 5  
+
+categories:
+- apps/dev-and-admin-tools
+
+skipNodeEmails: true
+
+nodes:
+  nodeType: llsmp
+  fixedCloudlets: 4
+  cloudlets: 16
+  nodeGroup: cp
+  skipEmail: true
+
+globals:
+  DB_USER: jelastic-${fn.random}
+  DB_PASS: ${fn.password(10)}
+  DB_HOST: 127.0.0.1
+  ZABBIX_PASS: ${fn.password(10)}
+
+onInstall:
+  - set-firewall
+  - enable-ssl
+  - creatUserDB
+  - install-zabbix
+  - add-to-redeploy
+  - installAddon:
+      id: update-addon
+      nodeGroup: cp  
+
+onAfterRedeployContainer:
+  - redeploy
+
+addons:
+  - id: update-addon
+    name: Update Zabbix Server
+    description: Update of all Zabbix Components, if after update it stays on same version but new is available, please contact support.
+    buttons:
+      - caption: Update
+        action: update
+        loadingText: Updating...
+        confirmText: Do you want to update all Zabbix Components?
+        successText: Zabbix Components have been successfully updated!
+    actions:
+      update:
+        - log: launching zabbix install JPS
+        - install: https://raw.githubusercontent.com/jeversonmiotti/Jelastic-Zabbix-Server/master/scripts/update-zabbix.jps
+          skipEmail: true
+
+actions:
+
+  set-firewall:
+    api[cp]:
+      - method: environment.security.addrule
+        params:
+          rule: {
+            action: "ALLOW",
+            direction: "INPUT",
+            name: "Zabbix Agents",
+            ports: "10051"
+            }
+
+  enable-ssl:
+    log: Enable Built in SSL
+    env.control.EditEnvSettings:
+      settings:
+        sslstate: true
+
+  creatUserDB:
+    - log: Create user for the Database
+    - cmd [cp]: |-
+        wget https://raw.githubusercontent.com/jelastic-jps/mysql-cluster/master/scripts/setupUser.sh -O ~/setupUser.sh &>> /var/log/run.log
+        bash ~/setupUser.sh ${globals.DB_USER} ${globals.DB_PASS} &>> /var/log/run.log
+        jem passwd set -p ${globals.DB_PASS} &>> /var/log/run.log 
+      user: root  
+
+  install-zabbix:
+    - log: launching zabbix install JPS
+    - install: ${baseUrl}/scripts/install-zabbix.jps
+      skipEmail: true
+      settings:
+        db_host: ${globals.DB_HOST}
+        db_user: ${globals.DB_USER}
+        db_pass: ${globals.DB_PASS}
+        zabbix_pass: ${globals.ZABBIX_PASS}
+        targetNodeID: ${nodes.cp.master.id}
+
+  add-to-redeploy:
+    - log: Add all necessary files and folder to the redeploy file
+    - cmd [cp]: |-
+        echo /etc/zabbix >> /etc/jelastic/redeploy.conf
+        echo /var/www/webroot >> /etc/jelastic/redeploy.conf
+        echo /opt/zabbix >> /etc/jelastic/redeploy.conf
+      user: root  
+  
+  redeploy:
+    - log: re-install zabbix after redeploy
+    - install: ${baseUrl}/scripts/redeploy-zabbix.jps
+      skipEmail: true
+
+success:
+  email: text/success-email.md
+  text: text/success-text.md
