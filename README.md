@@ -13,7 +13,7 @@ Additionally the zabbix agent is installed for the node.
 # Installation
 Simply import this link using the Jelastic JPS Import function:
 ```
-https://raw.githubusercontent.com/Aureliolo/Jelastic-Zabbix-server/master/main.jps
+https://raw.githubusercontent.com/jeversonmiotti/Jelastic-Zabbix-Server/master/main.jps
 ```
 
 Or copy the content of main.jps into the import window.
@@ -29,3 +29,6 @@ There is also an addon that gets installed with following option:
 If you press the update button it installs the new version if available and donwloads the new frontend files from this github repo if they have been published and are added on this github.
 
 Previous config files and frontend are backuped to /opt/zabbix for safekeeping.
+
+
+Thanks you @Aureliolo

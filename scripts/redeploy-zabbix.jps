@@ -17,8 +17,8 @@ actions:
         rpm --import https://repo.zabbix.com/RPM-GPG-KEY-ZABBIX-A14FE591 &>> /var/log/run.log
         rpm -Uvh https://repo.zabbix.com/zabbix/5.0/rhel/7/x86_64/zabbix-release-5.0-1.el7.noarch.rpm &>> /var/log/run.log
         yum clean all &>> /var/log/run.log
-        yum install zabbix-server-mysql zabbix-agent &>> /var/log/run.log
-        yum install centos-release-scl &>> /var/log/run.log
+        yum install zabbix-server-mysql zabbix-agent -y &>> /var/log/run.log
+        yum install centos-release-scl -y &>> /var/log/run.log
         sed -i '/max_input_time = 60/c\max_input_time = 300' /usr/local/lsws/lsphp7*/etc/php.ini &>> /var/log/run.log
         sed -i '/date.timezone =/c\date.timezone = Europe/Zurich' /usr/local/lsws/lsphp7*/etc/php.ini &>> /var/log/run.log
         systemctl restart zabbix-server zabbix-agent lshttpd &>> /var/log/run.log
@@ -29,7 +29,7 @@ actions:
   additional-config:
     - log: execute miscellanious commands for zabbix server functionality
     - cmd[${globals.TARGET_NODE_ID}]: |-
-        yum install traceroute &>> /var/log/run.log
+        yum install traceroute -y &>> /var/log/run.log
         rpm -vhU https://nmap.org/dist/nmap-7.80-1.x86_64.rpm &>> /var/log/run.log
         chmod 4755 /bin/ping
         echo "zabbix  ALL=NOPASSWD: /usr/bin/nmap" | (sudo su -c 'EDITOR="tee" visudo -f /etc/sudoers.d/zabbix')
