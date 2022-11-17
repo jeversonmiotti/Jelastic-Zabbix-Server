@@ -18,7 +18,7 @@ nodes:
   cloudlets: 16
   nodeGroup: cp
   skipEmail: true
-  tag: 6.0.12-php-7.4.28
+  
 
 globals:
   DB_USER: jelastic-${fn.random}
