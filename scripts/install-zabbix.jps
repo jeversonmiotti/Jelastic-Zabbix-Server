@@ -96,7 +96,7 @@ actions:
         chgrp -R litespeed /opt/zabbix
       user: root
       sayYes: true
-
+      
 # ping right change taken from https://community.pivotal.io/s/article/Linux-ping-command-fails-with-icmp-open-socket--Operation-not-permitted 
   additional-config:
     - log: execute miscellanious commands for zabbix server functionality
