@@ -54,4 +54,4 @@ actions:
 
 
 success:
-  text: text/success-update-text.mds
+  text: text/success-update-text.md
