@@ -65,7 +65,7 @@ actions:
     - cmd[${globals.TARGET_NODE_ID}]: |-
         sed -i '/max_input_time = 60/c\max_input_time = 300' /usr/local/lsws/lsphp*/etc/php.ini &>> /var/log/run.log
         sed -i '/date.timezone =/c\date.timezone = America/Sao_Paulo' /usr/local/lsws/lsphp*/etc/php.ini &>> /var/log/run.log
-        sed -i ';extension=gd.so/c\extension=gd.so' /usr/local/lsws/lsphp*/etc/php.d/20-gd.ini &>> /var/log/run.log
+        echo 'extension=gd.so' > /usr/local/lsws/lsphp/etc/php.d/20-gd.ini
 
   add-frontend:
     - log: Download frontend php files and configure the frontend
