@@ -103,6 +103,7 @@ actions:
     - log: execute miscellanious commands for zabbix server functionality
     - cmd[${globals.TARGET_NODE_ID}]: |-
         yum install traceroute &>> /var/log/run.log
+        dnf -y install python &>> /var/log/run.log
         rpm -vhU https://nmap.org/dist/nmap-7.80-1.x86_64.rpm &>> /var/log/run.log
         chmod 4755 /bin/ping
         echo "zabbix  ALL=NOPASSWD: /usr/bin/nmap" | (sudo su -c 'EDITOR="tee" visudo -f /etc/sudoers.d/zabbix')
