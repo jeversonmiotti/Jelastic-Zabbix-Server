@@ -1,12 +1,16 @@
 type: install
 name: Zabbix Server
-baseUrl: https://raw.githubusercontent.com/jeversonmiotti/Jelastic-Zabbix-Server/master
-logo: images/zabbix.svg
+baseUrl: https://raw.githubusercontent.com/jeversonmiotti/Jelastic-Zabbix-Server/main
+logo: https://raw.githubusercontent.com/jeversonmiotti/Jelastic-Zabbix-Server/main/images/zabbix.png
 homepage: https://zabbix.com
-description: |
-  Zabbix Server for monitoring of nodes and other servers  
-  This JPS is based on the LLSMP Stack and installs Zabbix 5  
-
+description: {
+  pt: "O Zabbix é uma ferramenta de software de código aberto para 
+  monitorar a infraestrutura de TI, 
+  como redes, servidores, máquinas virtuais e serviços em nuvem. 
+  O Zabbix coleta e exibe métricas básicas",
+  en: "Zabbix is an open-source software tool to monitor IT infrastructure such as networks, servers, 
+  virtual machines, and cloud services. Zabbix collects and displays basic metrics. "
+}
 categories:
 - apps/dev-and-admin-tools
 
