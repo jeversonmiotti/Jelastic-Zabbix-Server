@@ -38,7 +38,7 @@ actions:
     - log: Create database and add userrights/scheme
     - cmd[${globals.TARGET_NODE_ID}]: |-
         mysql -u root -p${globals.DB_PASS} -e "create database ${globals.DB_NAME} character set utf8 collate utf8_bin;" &>> /var/log/run.log
-        zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql -u${globals.DB_USER} -p${globals.DB_PASS} ${globals.DB_NAME} &>> /var/log/run.log
+        zcat /usr/share/zabbix-sql-scripts/mysql/server.sql.gz | mysql -u${globals.DB_USER} -p${globals.DB_PASS} ${globals.DB_NAME} &>> /var/log/run.log
         mysql -u root -p${globals.DB_PASS} -e "update ${globals.DB_NAME}.users set passwd=md5('${globals.ZABBIX_PASS}') where alias='Admin';" &>> /var/log/run.log
       user: root
 
