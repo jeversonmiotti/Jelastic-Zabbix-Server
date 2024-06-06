@@ -2,7 +2,7 @@ type: update
 name: Install Zabbix
 description: This installs Zabbix and configures it
 logo: images/zabbix.svg
-baseUrl: https://raw.githubusercontent.com/Aureliolo/Jelastic-Zabbix-server/master
+baseUrl: https://raw.githubusercontent.com/Aureliolo/Jelastic-Zabbix-server/main
 skipNodeEmails: true
 
 globals:
@@ -54,6 +54,8 @@ actions:
         sed -i '/ListenPort=10051/c\ListenPort=10051' /etc/zabbix/zabbix_server.conf 
         SERVER=$(hostname)
         sed -i '171d' /etc/zabbix/zabbix_agentd.conf
+        sed -i '/max_input_time = 60/c\max_input_time = 300' /usr/local/lsws/lsphp/etc/php.ini &>> /var/log/run.log
+        sed -i '/date.timezone =/c\date.timezone = America/Sao_Paulo' /usr/local/lsws/lsphp/etc/php.ini &>> /var/log/run.log
         sed -i "171i Hostname=$SERVER" /etc/zabbix/zabbix_agentd.conf
         systemctl restart zabbix-server zabbix-agent &>> /var/log/run.log
         systemctl enable zabbix-server zabbix-agent &>> /var/log/run.log

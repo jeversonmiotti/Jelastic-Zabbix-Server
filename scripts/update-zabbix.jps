@@ -1,6 +1,6 @@
 type: update
 name: Zabbix Server Upgrade 
-baseUrl: https://raw.githubusercontent.com/Aureliolo/Jelastic-Zabbix-Server/master
+baseUrl: https://raw.githubusercontent.com/Aureliolo/Jelastic-Zabbix-Server/main
 logo: images/zabbix.svg
 description: |
   This Addon allows you to upgrade the Zabbix Server and frontend.  
@@ -32,7 +32,7 @@ actions:
   upgrade-zabbix:
     - log: upgrade zabbix packages
     - cmd [cp]: |-
-        yum upgrade -y 'zabbix-*' centos-release-scl &>> /var/log/run.log
+        yum upgrade -y 'zabbix-*' &>> /var/log/run.log
         systemctl start zabbix-server zabbix-agent &>> /var/log/run.log
         systemctl enable zabbix-server zabbix-agent &>> /var/log/run.log
       user: root
