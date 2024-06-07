@@ -72,10 +72,11 @@ actions:
     - cmd[${globals.TARGET_NODE_ID}]: |-
         cd /var/www/webroot/ROOT &>> /var/log/run.log
         rm index.php &>> /var/log/run.log
-        wget ${baseUrl}/frontend/frontend.zip &>> /var/log/run.log
-        unzip frontend.zip &>> /var/log/run.log
-        rm frontend.zip &>> /var/log/run.log
+        cp -R /usr/share/zabbix/* /var/www/webroot/ROOT &>> /var/log/run.log
+        chown -R litespeed:litespeed /var/www/webroot/ROOT &>> /var/log/run.log
         sed -i '0,/zabbix/s//${globals.DB_NAME}/' /var/www/webroot/ROOT/conf/zabbix.conf.php.example
+        sed -i '0,/;extension/s//extension/' /usr/local/lsws/lsphp/etc/php.d/20-gd.ini
+        sed -i '0,/;extension/s//extension/' /usr/local/lsws/lsphp/etc/php.d/20-ldap.ini
         sed -i '8s/zabbix/${globals.DB_USER}/' /var/www/webroot/ROOT/conf/zabbix.conf.php.example
         sed -i '0,/localhost/s//127.0.0.1/' /var/www/webroot/ROOT/conf/zabbix.conf.php.example 
         DST1='$DB['"'"'DATABASE'"'"']      = '"'"'${globals.DB_NAME}'"'"';'
@@ -87,6 +88,9 @@ actions:
         sed -i 's#/etc/zabbix/web/maintenance.inc.php#/var/www/webroot/ROOT/conf/maintenance.inc.php#g' /var/www/webroot/ROOT/include/classes/core/ZBase.php
         sed -i 's#/etc/zabbix/web/zabbix.conf.php#/var/www/webroot/ROOT/conf/zabbix.conf.php#g' /var/www/webroot/ROOT/include/classes/core/CConfigFile.php
         mv /var/www/webroot/ROOT/conf/zabbix.conf.php.example /var/www/webroot/ROOT/conf/zabbix.conf.php
+        cp /var/www/webroot/ROOT/conf/zabbix.conf.php /etc/zabbix/web/zabbix.conf.php
+      user: root 
+      sayYes: true 
 
   prepare-for-upgrade-addon:
     - log: Creates folders and sets rights for the upgrade addon
