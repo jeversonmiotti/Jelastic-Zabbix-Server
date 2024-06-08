@@ -4,12 +4,9 @@ baseUrl: https://raw.githubusercontent.com/jeversonmiotti/Jelastic-Zabbix-Server
 logo: https://raw.githubusercontent.com/jeversonmiotti/Jelastic-Zabbix-Server/main/images/zabbix.png
 homepage: https://zabbix.com
 description: {
-  pt: "O Zabbix é uma ferramenta de software de código aberto para 
-  monitorar a infraestrutura de TI, 
-  como redes, servidores, máquinas virtuais e serviços em nuvem. 
-  O Zabbix coleta e exibe métricas básicas",
-  en: "Zabbix is an open-source software tool to monitor IT infrastructure such as networks, servers, 
-  virtual machines, and cloud services. Zabbix collects and displays basic metrics. "
+  pt: "O Zabbix é uma ferramenta de software de código aberto para monitorar a infraestrutura de TI, o redes, servidores, máquinas virtuais e serviços em nuvem. O Zabbix coleta e exibe métricas básicas",
+  en: "Zabbix is an open-source software tool to monitor IT infrastructure such as networks, servers, virtual machines, and cloud services. Zabbix collects and displays basic metrics. ",
+  es: "El Zabbix es una herramienta de software de código abierto para monitorear la infraestructura de TI, redes, servidores, máquinas virtuales y servicios en la nube. Zabbix recopila y muestra métricas básicas."
 }
 categories:
 - apps/dev-and-admin-tools
@@ -110,5 +107,5 @@ actions:
       skipEmail: true
 
 success:
-  email: text/success-email.md
-  text: text/success-text.md
+  text: { en: text/success-text-en.md, pt: text/success-text-pt.md, es: text/success-text-es.md }
+  email: { en: text/success-email-en.md, pt: text/success-email-pt.md, es: text/success-email-es.md }
