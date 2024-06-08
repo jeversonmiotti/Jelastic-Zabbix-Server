@@ -28,11 +28,13 @@ Claro! Aqui está a tradução do texto para o espanhol:
 
 2. Verifique los requisitos previos de Zabbix.
 
-3. En el tercer paso, debe ingresar la información de la base de datos. Mantenga seleccionada la opción MySQL e ingrese la información del host, el nombre de la base de datos, el usuario y la contraseña según lo proporcionado en este correo electrónico.
+3. En el tercer paso, debe ingresar la información de la base de datos. Mantenga seleccionada la opción MySQL e ingrese la información del host, el nombre de la base de datos, el usuario y la contraseña según lo proporcionado en este correo electrónico. Desmarque la opción: Database TLS encryption
 
-4. Revise la instalación y proceda al siguiente paso.
+4. En Configuración, agregue el nombre para Zabbix, elija la zona horaria y el tema deseado.
 
-5. Haga clic en el botón "Instalar" y espere a que se complete la instalación.
+5. Revise la instalación y proceda al siguiente paso.
+
+6. Haga clic en el botón "Instalar" y espere a que se complete la instalación.
 
 Datos de acceso para LiteSpeed WebAdmin Console:
 

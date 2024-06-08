@@ -24,15 +24,17 @@
 
  **Zabbix URL Install**: [https://${env.domain}/setup.php](https://${env.domain}/setup.php)
 
-  1- No primeiro passo, escolha o Idioma desejado que será utilizado.
+  1. No primeiro passo, escolha o Idioma desejado que será utilizado.
   
-  2- Verifique os pré-requisitos do Zabbix.
+  2. Verifique os pré-requisitos do Zabbix.
   
-  3- No terceiro será necessário colocar as informações do Banco de Dados. Deixar selecionado a opção MySQL e colocar as informações de host, nome do Banco de Dados, usuário e senha conforme informadas nesse email.
+  3. No terceiro será necessário colocar as informações do Banco de Dados. Deixar selecionado a opção MySQL e colocar as informações de host, nome do Banco de Dados, usuário e senha conforme informadas nesse email e desmarque a opção: Database TLS encryption.
 
-  4- Revise a instalação e siga para o próximo passo.
+  4. Em Settings, Adicione o nome para o Zabbix, escolha o timezone e o tema desejado.
 
-  5- Clique no botão "Instalar" e aguarde a conclusão da instalação.
+  5. Revise a instalação e siga para o próximo passo.
+
+  6. Clique no botão "Instalar" e aguarde a conclusão da instalação.
 
 
   Dados de acesso para LiteSpeed WebAdmin Console:

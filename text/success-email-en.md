@@ -24,11 +24,13 @@
 
 2. Verify Zabbix prerequisites.
 
-3. In the third step, you need to enter the Database information. Keep MySQL selected and enter the host, database name, user, and password as provided in this email.
+3. In the third step, you need to enter the Database information. Keep MySQL selected and enter the host, database name, user, and password as provided in this email. Uncheck the option: Database TLS encryption
 
-4. Review the installation and proceed to the next step.
+4. In Settings, add the name for Zabbix, choose the timezone and the desired theme.
 
-5. Click the "Install" button and wait for the installation to complete.
+5. Review the installation and proceed to the next step.
+
+6. Click the "Install" button and wait for the installation to complete.
 
 Access details for LiteSpeed WebAdmin Console:
 
