@@ -10,7 +10,7 @@
 
 **Database Name:** ${globals.DB_NAME}
 
-**Database User:** ${globals.DB_NAME}
+**Database User:** ${globals.DB_USER}
 
 **Password:** ${globals.DB_PASS}
 

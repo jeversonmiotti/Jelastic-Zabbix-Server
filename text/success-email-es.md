@@ -14,7 +14,7 @@ Claro! Aqui está a tradução do texto para o espanhol:
 
 **Nombre de la Base de Datos:** ${globals.DB_NAME}
 
-**Usuario de la Base de Datos:** ${globals.DB_NAME}
+**Usuario de la Base de Datos:** ${globals.DB_USER}
 
 **Contraseña:** ${globals.DB_PASS}
 

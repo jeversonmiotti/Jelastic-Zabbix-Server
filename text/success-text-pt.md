@@ -12,7 +12,7 @@
 
   **Nome do Banco de Dados:** ${globals.DB_NAME}
 
-  **Usuário do Banco de Dados:** ${globals.DB_NAME}
+  **Usuário do Banco de Dados:** ${globals.DB_USER}
   
   **Senha:** ${globals.DB_PASS}
 
