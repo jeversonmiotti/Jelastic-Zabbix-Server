@@ -8,7 +8,7 @@
 
 **Database Host:** 127.0.0.1
 
-**Database Name:** ${globals.DB_NAME}
+**Database Name:** zabbix_server
 
 **Database User:** ${globals.DB_USER}
 

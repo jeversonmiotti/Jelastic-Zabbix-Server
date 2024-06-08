@@ -10,7 +10,7 @@
   
   **Host do Banco de Dados:** 127.0.0.1
 
-  **Nome do Banco de Dados:** ${globals.DB_NAME}
+  **Nome do Banco de Dados:** zabbix_server
 
   **Usuário do Banco de Dados:** ${globals.DB_USER}
   

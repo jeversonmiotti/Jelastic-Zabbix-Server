@@ -12,7 +12,7 @@ Claro! Aqui está a tradução do texto para o espanhol:
 
 **Host de la Base de Datos:** 127.0.0.1
 
-**Nombre de la Base de Datos:** ${globals.DB_NAME}
+**Nombre de la Base de Datos:** zabbix_server
 
 **Usuario de la Base de Datos:** ${globals.DB_USER}
 
