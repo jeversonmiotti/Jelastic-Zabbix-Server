@@ -36,6 +36,9 @@
 
   6. Clique no botão "Instalar" e aguarde a conclusão da instalação.
 
+  Acesso padrão ao Console de Administração do Zabbix:
+  **Login:** Admin  
+  **Senha:** zabbix
 
   Dados de acesso para LiteSpeed WebAdmin Console:
 

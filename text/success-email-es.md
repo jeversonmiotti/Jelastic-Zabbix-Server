@@ -36,6 +36,10 @@ Claro! Aqui está a tradução do texto para o espanhol:
 
 6. Haga clic en el botón "Instalar" y espere a que se complete la instalación.
 
+Acceso predeterminado a la Consola de Administración de Zabbix:
+**Usuario:** Admin
+**Contraseña:** zabbix
+
 Datos de acceso para LiteSpeed WebAdmin Console:
 
 **Consola de Administración**: [https://${env.domain}:4848/](https://${env.domain}:4848/)  
