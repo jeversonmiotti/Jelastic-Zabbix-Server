@@ -1,7 +1,3 @@
-Claro! Aqui está a tradução do texto para o espanhol:
-
----
-
 ![Zabbix](https://raw.githubusercontent.com/jeversonmiotti/Jelastic-Zabbix-Server/main/images/zabbix.png)
   
 ### Aquí están los datos de acceso para la gestión de su entorno ${env.displayName}
