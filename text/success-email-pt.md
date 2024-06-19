@@ -1,4 +1,4 @@
- ![Zabbix](https://raw.githubusercontent.com/jeversonmiotti/Jelastic-Zabbix-Server/master/images/zabbix.png)
+ ![Zabbix](https://raw.githubusercontent.com/jeversonmiotti/Jelastic-Zabbix-Server/mail/images/zabbix.png)
   
   ### Seguem dados de acesso para Gerenciamento do seu Ambiente ${env.displayName}
   
