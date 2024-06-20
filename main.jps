@@ -18,6 +18,7 @@ nodes:
   fixedCloudlets: 4
   cloudlets: 16
   nodeGroup: cp
+  diskLimit: 50
   skipEmail: true
 
 globals:
